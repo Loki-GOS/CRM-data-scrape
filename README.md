@@ -21,8 +21,10 @@ Neccessary Features to add:
 Potential Features to add:
 
 How to use:
-- ensure all files from repository are present in folder (DO NOT CREATE SUBFOLDERS) (DataScraper.py,README.md,BusinessReferences.csv,ConsumerReferences.csv)
-- open folder containing the files in Visual Studio Code
+ON FIRST SETUP:
+- open Visual Studio Code and select "Clone Git Repository"
+![image](https://github.com/Loki-GOS/CRM-data-scrape/assets/167244472/92d0b0ba-9465-4173-8fcc-c951c6d9cd45)
+type in searchbar "
 
 
 
