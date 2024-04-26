@@ -20,5 +20,9 @@ Neccessary Features to add:
 
 Potential Features to add:
 
+How to use:
+- ensure all files from repository are present in folder (DO NOT CREATE SUBFOLDERS) (DataScraper.py,README.md,BusinessReferences.csv,ConsumerReferences.csv)
+- open folder containing the files in Visual Studio Code
+
 
 
