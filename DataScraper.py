@@ -110,6 +110,8 @@ while (MaxInRange==False):
 	else:
 		MaxInRange=True
 print ("")
+
+
 #range of usernames/passwords (indexes for linked users/pass need to be identicle, in speech marks and seperated by commas)
 usernames = []
 passwords = []
@@ -211,12 +213,10 @@ with requests.session() as s:
 			elif (current_time<9):
 				print("It is before 9am")
 				breakpoint()
-
 			else:
 				InHours=True
 
 		WaitTime=random.uniform(Short,Long)
-		print(WaitTime)
 
 
 		time.sleep(float(WaitTime))
