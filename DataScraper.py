@@ -109,10 +109,10 @@ while (MaxInRange==False):
 
 	else:
 		MaxInRange=True
-
+print ("")
 #range of usernames/passwords (indexes for linked users/pass need to be identicle, in speech marks and seperated by commas)
-usernames = [""]
-passwords = [""]
+usernames = []
+passwords = []
 
 if (len(usernames)!=len(passwords)):
 	print("Error:Uneven amount of Usernames compared to Passwords")
@@ -126,7 +126,6 @@ elif (len(usernames)==0):
 Found=False
 while (Found==False):
 	Choice=(input("Which username do you want to use:")).lower().split()[0]
-	 
 	for p in range(0,len(usernames)):
 
 		if (usernames[p]==Choice):
@@ -135,10 +134,19 @@ while (Found==False):
 
 	if (Found==False):
 		print("Username not found")
+print("")
 
-Short=int(input("Shortest time between requests(seconds):"))
-Long=int(input("Longest time between requests (seconds):"))
-
+Short=float(input("Shortest time between requests(seconds):"))
+Short=Short+0.01
+TimeValid=False
+while (TimeValid==False):	
+	Long=float(input("Longest time between requests (seconds):"))
+	Long=Long+0.01
+	if (Long<Short):
+		print("must be larger than shortest time")
+	else:
+		TimeValid=True
+print("")
 
 username=usernames[LoginIndex]
 password=passwords[LoginIndex]
@@ -191,11 +199,11 @@ with requests.session() as s:
 	count=0
 
 	for i in range(StartRef-1,EndRef):
-		now = datetime.now()
-		current_time = int(now.strftime("%H"))
 		InHours=False
 
 		while (InHours==False):
+			now = datetime.now()
+			current_time = int(now.strftime("%H"))
 			if (current_time>=18):
 				print("It is past 6pm")
 				breakpoint()
@@ -207,8 +215,11 @@ with requests.session() as s:
 			else:
 				InHours=True
 
-		WaitTime=random.randint(Short,Long)
-		time.sleep(WaitTime)
+		WaitTime=random.uniform(Short,Long)
+		print(WaitTime)
+
+
+		time.sleep(float(WaitTime))
 
 		salepageURL="https://crm.salescreate.com"+LinkType+"upgrades/"+str(ReferenceList[i]) [2:-2]
 		r=s.get(salepageURL)
