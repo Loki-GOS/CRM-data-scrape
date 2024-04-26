@@ -93,7 +93,7 @@ MinInRange=False
 MaxInRange=False
 
 while (MinInRange==False):
-	StartRef=int(input("Which line of the csv would you like to start on:"))
+	StartRef=int(input("Which line of the csv would you like to start on(inclusive):"))
 
 	if(StartRef>len(ReferenceList) or StartRef==0):
 		print("Out Of Range")
@@ -102,7 +102,7 @@ while (MinInRange==False):
 		MinInRange=True
 
 while (MaxInRange==False):
-	EndRef=int(input("Which line of the csv would you like to end on:"))
+	EndRef=int(input("Which line of the csv would you like to end on(inclusive):"))
 
 	if(EndRef>len(ReferenceList)or EndRef<StartRef):
 		print("Out Of Range")
@@ -228,9 +228,8 @@ with requests.session() as s:
 		SpecFound=False
     
 		RefText=soup.find(class_="page-header")
-		if (RefText!=None):
-			Reference.append(RefText.text.strip().split()[2])
-			SpecFound=False
+		Reference.append(str(ReferenceList[i]) [2:-2])
+		SpecFound=False
 	
 		UpDate=soup.find(class_="alert alert-success")
 		if(UpDate==None):
