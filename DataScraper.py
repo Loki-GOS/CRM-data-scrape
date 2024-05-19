@@ -5,6 +5,31 @@ from bs4 import BeautifulSoup
 import random
 import time
 from datetime import datetime 
+
+
+#INPUT USERNAMES/PASSWORDS IN APPROPRIATE FIELDS BELOW, THIS IS ONLY PART OF CODE TO BE EDITED
+#IN FORMAT: usernames=["User1","User2","User3"]
+
+#green lines are comments to explain purposes
+
+#range of usernames/passwords (indexes for linked users/pass need to be identicle, in speech marks and seperated by commas)
+usernames = ["jackt"]
+passwords = ["Jack2006!"]
+
+if (len(usernames)!=len(passwords)):
+	print("Error:Uneven amount of Usernames compared to Passwords")
+	print("located on line:16/17")
+	quit()
+
+elif (len(usernames)==0):
+	print("Error:Username and password fields empty")
+	print("located on line:16/17")
+	quit()
+
+
+
+
+#MAIN CODE
   
 #removes all emojis from the parameter string
 def remove_emoji(inputString):
@@ -110,19 +135,6 @@ while (MaxInRange==False):
 	else:
 		MaxInRange=True
 print ("")
-
-
-#range of usernames/passwords (indexes for linked users/pass need to be identicle, in speech marks and seperated by commas)
-usernames = []
-passwords = []
-
-if (len(usernames)!=len(passwords)):
-	print("Error:Uneven amount of Usernames compared to Passwords")
-	quit()
-
-elif (len(usernames)==0):
-	print("Error:Username and password fields empty")
-	quit()
 
 
 Found=False
@@ -241,7 +253,10 @@ with requests.session() as s:
 					if (UpDate!=None):
 						Connected.append((UpDate.text.strip().split()[4])[:-1])
 				else:
-					Connected.append((UpDate.text.strip().split()[4])[:-1])
+					if (((UpDate.text.strip().split()[4])[:-1])=="cancelled"):
+						Connected.append((UpDate.text.strip().split()[4])[:-1])
+					else:
+						Connected.append(UpDate.text.strip().split()[4])
 			else:
 				Connected.append(RefText.text.strip().split()[3])
 		else:
